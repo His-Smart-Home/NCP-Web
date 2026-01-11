@@ -40,18 +40,11 @@
             <button class="ghost-btn">View services</button>
           </div>
           <div class="hero-stats">
-            <div class="stat-card reveal">
-              <h3 class="count-up" data-count="99.99" data-suffix="%">0%</h3>
-              <span>uptime targets</span>
-            </div>
-            <div class="stat-card reveal">
-              <h3 class="count-up" data-count="24" data-suffix="/7">0</h3>
-              <span>monitoring & support</span>
-            </div>
-            <div class="stat-card reveal">
-              <h3 class="count-up" data-count="300" data-suffix="+">0</h3>
-              <span>sites connected</span>
-            </div>
+            <div class="pipeline-step reveal">Design</div>
+            <span class="pipeline-arrow reveal" aria-hidden="true">→</span>
+            <div class="pipeline-step reveal">Deploy</div>
+            <span class="pipeline-arrow reveal" aria-hidden="true">→</span>
+            <div class="pipeline-step reveal">Support</div>
           </div>
         </div>
       </section>
@@ -235,47 +228,10 @@
       ).matches;
 
       const revealElements = document.querySelectorAll(".reveal");
-      const countElements = document.querySelectorAll(".count-up");
-
-      const formatCount = (value, suffix) => {
-        const fixedValue =
-          value % 1 === 0 ? Math.round(value).toString() : value.toFixed(2);
-        return `${fixedValue}${suffix ?? ""}`;
-      };
-
-      const animateCount = (element) => {
-        if (element.dataset.counted === "true") return;
-        const target = Number.parseFloat(element.dataset.count || "0");
-        const suffix = element.dataset.suffix || "";
-        const duration = 3000;
-        const startTime = performance.now();
-        element.dataset.counted = "true";
-
-        const tick = (now) => {
-          const progress = Math.min((now - startTime) / duration, 1);
-          const currentValue = target * progress;
-          element.textContent = formatCount(currentValue, suffix);
-          if (progress < 1) {
-            requestAnimationFrame(tick);
-          } else {
-            element.textContent = formatCount(target, suffix);
-          }
-        };
-
-        requestAnimationFrame(tick);
-      };
-
       if (prefersReducedMotion) {
         revealElements.forEach((element) =>
           element.classList.add("is-visible")
         );
-        countElements.forEach((element) => {
-          const target = Number.parseFloat(element.dataset.count || "0");
-          element.textContent = formatCount(
-            target,
-            element.dataset.suffix || ""
-          );
-        });
       } else {
         const revealObserver = new IntersectionObserver(
           (entries) => {
@@ -291,20 +247,6 @@
         );
 
         revealElements.forEach((element) => revealObserver.observe(element));
-
-        const countObserver = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                animateCount(entry.target);
-                countObserver.unobserve(entry.target);
-              }
-            });
-          },
-          { threshold: 0.6 }
-        );
-
-        countElements.forEach((element) => countObserver.observe(element));
       }
     </script>
   </body>
