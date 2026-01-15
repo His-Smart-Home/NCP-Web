@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NetConn Pro - Employee DBs</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a class="logo" href="index.html">NetConn Pro</a>
+        <div class="nav-links">
+          <a href="index.html#services">Services</a>
+          <a href="index.html#process">Process</a>
+          <a href="index.html#about">About</a>
+          <a href="employee-dbs.html">Employee DBs</a>
+          <a href="index.html#contact">Contact</a>
+        </div>
+        <button class="nav-cta">Schedule a Call</button>
+      </nav>
+    </header>
+
+    <main class="dbs-page">
+      <section class="dbs-hero reveal">
+        <div class="dbs-hero-inner">
+          <h1>DBS Information</h1>
+          <p>
+            At NetConn Pro, we take your safety and trust seriously. All employees
+            undergo enhanced DBS checks to ensure the highest standards.
+          </p>
+        </div>
+      </section>
+
+      <section class="dbs-cards reveal">
+        <article class="dbs-card reveal">
+          <div class="dbs-person">
+            <div class="engineer-photo">
+              <img
+                src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><rect width='200' height='200' fill='%23141a2b'/><circle cx='100' cy='78' r='38' fill='%23f5f7ff'/><path d='M40 170c10-30 40-48 60-48s50 18 60 48' fill='%234c7dff'/><circle cx='86' cy='72' r='6' fill='%23141a2b'/><circle cx='114' cy='72' r='6' fill='%23141a2b'/><path d='M82 92c8 10 28 10 36 0' stroke='%23141a2b' stroke-width='6' stroke-linecap='round' fill='none'/></svg>"
+                alt="Nathan Bendall"
+              />
+            </div>
+            <div>
+              <h2>Nathan Bendall</h2>
+              <p><strong>Title:</strong> Infrastructure Manager</p>
+            </div>
+          </div>
+          <div class="dbs-meta">
+            <div class="dbs-row">
+              <span>Enhanced DBS Number:</span>
+              <span class="dbs-chip">00123456789</span>
+            </div>
+            <div class="dbs-row">
+              <span>DBS Date of Issue:</span>
+              <span class="dbs-chip">01/01/2026</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="dbs-card reveal">
+          <div class="dbs-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path
+                d="M8.5 9.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM15.5 10a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"
+                fill="currentColor"
+              />
+              <path
+                d="M3.5 18.5c0-3 3-5.5 6.5-5.5s6.5 2.5 6.5 5.5"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+              <path
+                d="M13.5 18.5c.2-2.4 2.4-4.5 5-4.5 2.8 0 5 2 5 4.5"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+            </svg>
+          </div>
+          <h3>Employee DBS Information</h3>
+          <p>
+            As part of our commitment to safety, NetConn Pro ensures that all
+            employees undergo enhanced DBS checks. This is a standard procedure
+            for maintaining trust and safety in all professional relationships.
+          </p>
+          <ul class="dbs-list">
+            <li><strong>DBS Check Levels:</strong> Enhanced DBS checks for all relevant roles.</li>
+            <li><strong>Why It Matters:</strong> Ensures our team members meet the highest standards.</li>
+          </ul>
+        </article>
+      </section>
+    </main>
+
+    <footer class="footer reveal">
+      <div class="reveal">
+        <strong>NetConn Pro</strong>
+        <p>Modern networks. Secure operations. Always on.</p>
+      </div>
+      <div class="footer-links reveal">
+        <span>Ac 2025 NetConn Pro</span>
+        <span>hello@NetConnpro.com</span>
+        <span>+1 (555) 410-9920</span>
+      </div>
+    </footer>
+    <script>
+      const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
+      const revealElements = document.querySelectorAll(".reveal");
+      if (prefersReducedMotion) {
+        revealElements.forEach((element) =>
+          element.classList.add("is-visible")
+        );
+      } else {
+        const revealObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                entry.target.classList.remove("reveal");
+                revealObserver.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.2 }
+        );
+
+        revealElements.forEach((element) => revealObserver.observe(element));
+      }
+    </script>
+  </body>
+</html>
+
+
