@@ -28,7 +28,7 @@
     </header>
 
     <main class="dbs-page">
-      <section class="dbs-hero reveal">
+      <section class="dbs-hero scroll-animate">
         <div class="dbs-hero-inner">
           <h1>DBS Information</h1>
           <p>
@@ -38,8 +38,8 @@
         </div>
       </section>
 
-      <section class="dbs-cards reveal">
-        <article class="dbs-card reveal">
+      <section class="dbs-cards scroll-animate">
+        <article class="dbs-card scroll-animate">
           <div class="dbs-person">
             <div class="engineer-photo">
               <img
@@ -64,7 +64,7 @@
           </div>
         </article>
 
-        <article class="dbs-card reveal">
+        <article class="dbs-card scroll-animate">
           <div class="dbs-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none">
               <path
@@ -99,12 +99,12 @@
       </section>
     </main>
 
-    <footer class="footer reveal">
-      <div class="reveal">
+    <footer class="footer scroll-animate">
+      <div class="scroll-animate">
         <strong>NetConn Pro</strong>
         <p>Modern networks. Secure operations. Always on.</p>
       </div>
-      <div class="footer-links reveal">
+      <div class="footer-links scroll-animate">
         <span>Ac 2025 NetConn Pro</span>
         <span>hello@NetConnpro.com</span>
         <span>+1 (555) 410-9920</span>
@@ -115,7 +115,7 @@
         "(prefers-reduced-motion: reduce)"
       ).matches;
 
-      const revealElements = document.querySelectorAll(".reveal");
+      const revealElements = document.querySelectorAll(".scroll-animate");
       if (prefersReducedMotion) {
         revealElements.forEach((element) =>
           element.classList.add("is-visible")
@@ -126,7 +126,6 @@
             entries.forEach((entry) => {
               if (entry.isIntersecting) {
                 entry.target.classList.add("is-visible");
-                entry.target.classList.remove("reveal");
                 revealObserver.unobserve(entry.target);
               }
             });
@@ -139,5 +138,6 @@
     </script>
   </body>
 </html>
+
 
 
