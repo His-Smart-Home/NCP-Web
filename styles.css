@@ -581,6 +581,44 @@ section {
   background: rgba(20, 26, 43, 0.6);
 }
 
+.dbs-profile {
+  display: grid;
+  gap: 18px;
+}
+
+.dbs-person {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.dbs-role {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.dbs-meta {
+  display: grid;
+  gap: 10px;
+}
+
+.dbs-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.dbs-chip {
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(76, 125, 255, 0.15);
+  border: 1px solid rgba(76, 125, 255, 0.3);
+  color: var(--text);
+  font-weight: 600;
+}
+
 @keyframes aurora-drift {
   0% {
     transform: translateY(-14%) translateX(-6%);
