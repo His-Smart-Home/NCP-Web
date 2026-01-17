@@ -22,7 +22,7 @@
           <a href="#about">About</a>
           <a href="#contact">Contact</a>
         </div>
-        <button class="nav-cta">Schedule a Call</button>
+        <button class="nav-cta" data-contact-modal>Schedule a Call</button>
       </nav>
     </header>
 
@@ -36,8 +36,8 @@
             infrastructure, managed IT, and smart security for growing teams.
           </p>
           <div class="hero-actions">
-            <button class="primary-btn">Get a custom plan</button>
-            <button class="ghost-btn">View services</button>
+            <button class="primary-btn" data-contact-modal>Get a quote</button>
+            <a href="#services"><button class="ghost-btn">View services</button></a>
           </div>
           <div class="hero-stats">
             <div class="pipeline-step scroll-animate">Design</div>
@@ -147,7 +147,7 @@
             <li>Endpoint security & EDR</li>
             <li>Network audits & compliance</li>
           </ul>
-          <button class="secondary-btn">Explore our capabilities</button>
+          <button class="secondary-btn" data-contact-modal>Explore our capabilities</button>
         </div>
       </section>
 
@@ -183,19 +183,37 @@
 
       <section class="cta scroll-animate" id="contact">
         <div class="scroll-animate">
-          <h2>Ready to strengthen your connectivity?</h2>
+          <h2>Ready to strengthen your business?</h2>
           <p>
             Tell us about your goals and we'll craft a plan that keeps your
             infrastructure resilient.
           </p>
         </div>
         <form class="cta-form scroll-animate">
-          <input type="text" placeholder="Full name" />
-          <input type="email" placeholder="Work email" />
-          <button type="submit">Request consultation</button>
+          <button type="button" data-contact-modal>Request consultation</button>
         </form>
       </section>
     </main>
+
+    <div class="modal" id="contact-modal" aria-hidden="true">
+      <div class="modal-overlay" data-modal-close></div>
+      <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
+        <button class="modal-close" type="button" data-modal-close aria-label="Close contact form">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h2 id="contact-modal-title">Contact Us</h2>
+        <p>
+          Tell us about your goals and timeline. We'll follow up within one business day.
+        </p>
+        <form class="modal-form">
+          <input type="text" placeholder="Full name" />
+          <input type="email" placeholder="Work email" />
+          <input type="text" placeholder="Company" />
+          <textarea rows="4" placeholder="What do you need help with?"></textarea>
+          <button type="submit">Send request</button>
+        </form>
+      </div>
+    </div>
 
     <footer class="footer scroll-animate">
       <div class="scroll-animate">
@@ -232,6 +250,39 @@
 
         revealElements.forEach((element) => revealObserver.observe(element));
       }
+
+      const contactModal = document.getElementById("contact-modal");
+      const modalTriggers = document.querySelectorAll("[data-contact-modal]");
+      const modalCloseTargets = contactModal.querySelectorAll("[data-modal-close]");
+
+      const openContactModal = () => {
+        contactModal.classList.add("is-visible");
+        contactModal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("modal-open");
+      };
+
+      const closeContactModal = () => {
+        contactModal.classList.remove("is-visible");
+        contactModal.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("modal-open");
+      };
+
+      modalTriggers.forEach((trigger) => {
+        trigger.addEventListener("click", (event) => {
+          event.preventDefault();
+          openContactModal();
+        });
+      });
+
+      modalCloseTargets.forEach((target) =>
+        target.addEventListener("click", closeContactModal)
+      );
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && contactModal.classList.contains("is-visible")) {
+          closeContactModal();
+        }
+      });
     </script>
   </body>
 </html>
