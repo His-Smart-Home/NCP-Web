@@ -30,7 +30,15 @@
       <section class="hero scroll-animate">
         <div class="hero-content">
           <div class="eyebrow">Your modern network & IT partner</div>
-          <h1>Reliable connectivity that powers your business.</h1>
+          <h1>
+            Reliable connectivity that powers your
+            <span class="slot-machine">
+              <span class="slot-machine__track">
+                <span>business</span>
+              </span>
+            </span>
+            .
+          </h1>
           <p>
             NetConn Pro designs, deploys, and supports resilient network
             infrastructure, managed IT, and smart security for growing teams.
@@ -249,6 +257,65 @@
         );
 
         revealElements.forEach((element) => revealObserver.observe(element));
+      }
+
+      const slotMachine = document.querySelector(".slot-machine");
+      if (slotMachine) {
+        const words = ["home", "business", "cafe", "restaurant", "bar", "pub"];
+        const track = slotMachine.querySelector(".slot-machine__track");
+        const startWord = "business";
+        let index = words.indexOf(startWord);
+
+        if (index === -1) {
+          index = 0;
+        }
+
+        const repetitions = 4;
+        const extendedWords = Array.from({ length: repetitions }, () => words).flat();
+        track.innerHTML = extendedWords
+          .map((word) => `<span>${word}</span>`)
+          .join("");
+
+        const setIndex = (nextIndex, animate = true) => {
+          track.style.transition = animate
+            ? "transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)"
+            : "none";
+          track.style.transform = `translateY(${-nextIndex}em)`;
+        };
+
+        setIndex(index, false);
+
+        if (!prefersReducedMotion) {
+          let spinTimerId;
+          const scheduleNextSpin = () => {
+            spinTimerId = window.setTimeout(
+              spinOnce,
+              2400 + Math.random() * 2000
+            );
+          };
+
+          const spinOnce = () => {
+            const target = Math.floor(Math.random() * words.length);
+            const delta = (target - index + words.length) % words.length;
+            const cycles = 2 + Math.floor(Math.random() * 2);
+            const totalSteps = cycles * words.length + delta;
+            const finalIndex = index + totalSteps;
+            const duration = Math.max(900, totalSteps * 110);
+
+            const onSpinEnd = () => {
+              track.removeEventListener("transitionend", onSpinEnd);
+              index = target;
+              setIndex(index, false);
+              scheduleNextSpin();
+            };
+
+            track.addEventListener("transitionend", onSpinEnd);
+            track.style.transition = `transform ${duration}ms cubic-bezier(0.16, 1, 0.3, 1)`;
+            track.style.transform = `translateY(${-finalIndex}em)`;
+          };
+
+          scheduleNextSpin();
+        }
       }
 
       const contactModal = document.getElementById("contact-modal");

@@ -147,6 +147,28 @@ a {
   margin-bottom: 20px;
 }
 
+.slot-machine {
+  display: inline-flex;
+  position: relative;
+  height: 1em;
+  min-width: 10ch;
+  overflow: hidden;
+  vertical-align: baseline;
+  line-height: 1em;
+}
+
+.slot-machine__track {
+  display: block;
+  transform: translateY(0);
+  will-change: transform;
+}
+
+.slot-machine__track span {
+  display: block;
+  height: 1em;
+  line-height: 1em;
+}
+
 .hero-content p {
   color: var(--muted);
   margin-bottom: 28px;
