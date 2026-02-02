@@ -215,10 +215,10 @@
           Tell us about your goals and timeline. We'll follow up within one business day.
         </p>
         <form class="modal-form">
-          <input type="text" placeholder="Full name" />
-          <input type="email" placeholder="Email address" />
-          <input type="text" placeholder="Location" />
-          <textarea rows="4" placeholder="What do you need help with?"></textarea>
+          <input type="text" name="fullName" placeholder="Full name" />
+          <input type="email" name="email" placeholder="Email address" />
+          <input type="text" name="location" placeholder="Location" />
+          <textarea name="message" rows="4" placeholder="What do you need help with?"></textarea>
           <button type="submit">Send request</button>
         </form>
       </div>
@@ -452,6 +452,50 @@
             sessionStorage.setItem("discountModalSeen", "true");
           }
         }, 1400);
+      }
+
+      const contactForm = document.querySelector(".modal-form");
+      const contactSubmit = contactForm?.querySelector("button[type='submit']");
+
+      if (contactForm) {
+        contactForm.addEventListener("submit", async (event) => {
+          event.preventDefault();
+
+          const formData = new FormData(contactForm);
+          const payload = Object.fromEntries(formData.entries());
+
+          if (contactSubmit) {
+            contactSubmit.disabled = true;
+            contactSubmit.textContent = "Sending...";
+          }
+
+          try {
+            const response = await fetch(
+              "https://n8n.netconn.pro/webhook/ncp-web-contact",
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(payload),
+              }
+            );
+
+            if (!response.ok) {
+              throw new Error("Request failed");
+            }
+
+            contactForm.reset();
+            closeContactModal();
+          } catch (error) {
+            console.error("Contact form submission failed:", error);
+          } finally {
+            if (contactSubmit) {
+              contactSubmit.disabled = false;
+              contactSubmit.textContent = "Send request";
+            }
+          }
+        });
       }
     </script>
   </body>
