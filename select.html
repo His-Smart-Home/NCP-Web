@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NetConn Pro - Choose Your Focus</title>
+    <link rel="stylesheet" href="src/css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a href="index.html">
+          <img class="logo" src="src/img/logo.png" alt="NetConn Pro" />
+        </a>
+        <div class="nav-links">
+          <a href="index.html#services">Services</a>
+          <a href="index.html#process">Process</a>
+          <a href="index.html#about">About</a>
+          <a href="index.html#contact">Contact</a>
+        </div>
+        <a class="nav-cta" href="index.html#contact">Schedule a Call</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="services scroll-animate" id="select">
+        <div class="section-title scroll-animate">
+          <h2>Choose your focus</h2>
+          <p>Select the experience that matches your needs.</p>
+        </div>
+        <div class="service-grid">
+          <a href="home.html" class="scroll-animate">
+            <article>
+              <h3>Home</h3>
+              <p>Residential networking, AV, smart security, and fast Wi-Fi.</p>
+            </article>
+          </a>
+          <a href="business.html" class="scroll-animate">
+            <article>
+              <h3>Business</h3>
+              <p>Scalable networks, managed IT, and secure connectivity.</p>
+            </article>
+          </a>
+          <a href="hospitality.html" class="scroll-animate">
+            <article>
+              <h3>Hospitality</h3>
+              <p>Guest Wi-Fi, CCTV, and reliable infrastructure for venues.</p>
+            </article>
+          </a>
+          <a href="other.html" class="scroll-animate">
+            <article>
+              <h3>Other</h3>
+              <p>Custom solutions for unique environments and requirements.</p>
+            </article>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer scroll-animate">
+      <div class="scroll-animate">\r\n        <strong>NetConn Pro</strong>
+        <p>Modern networks. Secure operations. Always on.</p>
+      </div>
+      <div class="footer-links scroll-animate">
+        <span>Â© 2026 NetConn Pro</span>
+        <span>hello@netconn.pro</span>
+        <span>+44 7706 943666</span>
+      </div>
+    </footer>
+      <script>
+      const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
+      const revealElements = document.querySelectorAll(".scroll-animate");
+      if (prefersReducedMotion) {
+        revealElements.forEach((element) =>
+          element.classList.add("is-visible")
+        );
+      } else {
+        const revealObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                revealObserver.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.2 }
+        );
+
+        revealElements.forEach((element) => revealObserver.observe(element));
+      }
+    </script>  </body>
+</html>
