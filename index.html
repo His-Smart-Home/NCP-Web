@@ -179,7 +179,7 @@
             <p>
               "NetConn provided a very swift service to diagnose an ongoing issue with the access panel on our garage door. Nathan was very thorough and gave a detailed description of the issue causing the fault. I would highly recommend NetConn for any domestic networking, AV installation and security work."
             </p>
-            <h4>Resident, Chertsey</h4>
+            <h4>Resident, Addlestone</h4>
           </article>
           <article class="scroll-animate">
             <p>
@@ -191,6 +191,40 @@
         </div>
       </section>
 
+      <section class="partners scroll-animate" id="partners">
+        <div class="section-title scroll-animate">
+          <h2>Partners we work with</h2>
+          <p>Trusted platforms and vendors we deploy every day.</p>
+        </div>
+        <div class="partners-marquee" aria-label="Partner logos">
+          <div class="partners-track">
+            <div class="partner-card">
+              <img src="src/img/partners/partner-1.svg" alt="Partner 1" />
+            </div>
+            <div class="partner-card">
+              <img src="src/img/partners/partner-2.png" alt="Partner 2" />
+            </div>
+            <div class="partner-card">
+              <img src="src/img/partners/partner-3.png" alt="Partner 3" />
+            </div>
+            <div class="partner-card">
+              <img src="src/img/partners/partner-4.png" alt="Partner 4" />
+            </div>
+            <div class="partner-card" aria-hidden="true">
+              <img src="src/img/partners/partner-1.svg" alt="" />
+            </div>
+            <div class="partner-card" aria-hidden="true">
+              <img src="src/img/partners/partner-2.png" alt="" />
+            </div>
+            <div class="partner-card" aria-hidden="true">
+              <img src="src/img/partners/partner-3.png" alt="" />
+            </div>
+            <div class="partner-card" aria-hidden="true">
+              <img src="src/img/partners/partner-4.png" alt="" />
+            </div>
+          </div>
+        </div>
+      </section>
       <section class="cta scroll-animate" id="contact">
         <div class="scroll-animate">
           <h2>Ready to strengthen your business?</h2>
@@ -255,6 +289,21 @@
       </div>
     </footer>
     <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const utmCampaign = urlParams.get("utm_campaign");
+
+      if (utmCampaign) {
+        const campaignUrl = new URL("https://n8n.netconn.pro/webhook/utm-catch");
+        campaignUrl.searchParams.set("utm_campaign", utmCampaign);
+
+        fetch(campaignUrl.toString(), {
+          method: "POST",
+          mode: "no-cors",
+        }).catch((error) => {
+          console.error("UTM campaign tracking failed:", error);
+        });
+      }
+
       const prefersReducedMotion = window.matchMedia(
         "(prefers-reduced-motion: reduce)"
       ).matches;

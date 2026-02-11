@@ -851,3 +851,69 @@ section {
     filter: blur(0);
   }
 }
+
+.partners {
+  padding-top: 40px;
+}
+
+.partners-marquee {
+  max-width: 1100px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: linear-gradient(
+    120deg,
+    rgba(20, 26, 43, 0.9),
+    rgba(11, 15, 26, 0.9)
+  );
+  box-shadow: 0 18px 36px rgba(2, 6, 23, 0.4);
+}
+
+.partners-track {
+  display: flex;
+  gap: 24px;
+  padding: 26px 24px;
+  width: max-content;
+  animation: partners-marquee 28s linear infinite;
+}
+
+.partners-marquee:hover .partners-track {
+  animation-play-state: paused;
+}
+
+.partner-card {
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  border: 1px solid rgba(245, 247, 255, 0.08);
+  background: rgba(10, 14, 26, 0.8);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+}
+
+.partner-card img {
+  max-width: 90px;
+  max-height: 90px;
+  object-fit: contain;
+  filter: grayscale(1);
+  opacity: 0.8;
+  transition: filter 0.25s ease, opacity 0.25s ease, transform 0.25s ease;
+}
+
+.partner-card:hover img {
+  filter: grayscale(0);
+  opacity: 1;
+  transform: scale(1.04);
+}
+
+@keyframes partners-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
