@@ -275,5 +275,31 @@
         });
       }
     </script>
+  
+    <div class="site-version" aria-label="Site version">Version v1.0.0</div>
+    <style>
+      .site-version {
+        position: fixed;
+        right: 12px;
+        bottom: 10px;
+        z-index: 999;
+        font-size: 0.72rem;
+        letter-spacing: 0.2px;
+        color: rgba(245,247,255,0.72);
+        background: rgba(11,15,26,0.78);
+        border: 1px solid rgba(245,247,255,0.14);
+        border-radius: 999px;
+        padding: 4px 10px;
+        backdrop-filter: blur(6px);
+      }
+      @media (max-width: 768px) {
+        .site-version {
+          right: 8px;
+          bottom: 8px;
+          font-size: 0.66rem;
+          padding: 3px 8px;
+        }
+      }
+    </style>
   </body>
 </html>
