@@ -3,306 +3,140 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NetConn Pro - Services & Packages</title>
+    <title>NetConn Pro - Services</title>
     <link rel="stylesheet" href="src/css/styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
     <style>
-      .nav-dropdown {
-        position: relative;
-      }
-
+      .nav-dropdown { position: relative; }
       .nav-dropdown-toggle {
-        background: transparent;
-        border: none;
-        color: var(--muted);
-        font: inherit;
-        cursor: pointer;
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
+        background: transparent; border: none; color: var(--muted); font: inherit; cursor: pointer;
+        display: inline-flex; align-items: center; gap: 6px;
       }
-
-      .nav-dropdown-toggle:hover {
-        color: var(--text);
-      }
-
+      .nav-dropdown-toggle:hover { color: var(--text); }
       .nav-dropdown-menu {
-        position: absolute;
-        top: calc(100% + 10px);
-        left: 0;
-        min-width: 220px;
-        background: var(--card);
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        padding: 8px;
-        box-shadow: 0 18px 32px rgba(2, 6, 23, 0.45);
-        opacity: 0;
-        pointer-events: none;
-        transform: translateY(6px);
-        transition: opacity 0.2s ease, transform 0.2s ease;
-        z-index: 20;
+        position: absolute; top: calc(100% + 10px); left: 0; min-width: 220px;
+        background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 8px;
+        box-shadow: 0 18px 32px rgba(2, 6, 23, 0.45); opacity: 0; pointer-events: none;
+        transform: translateY(6px); transition: opacity .2s ease, transform .2s ease; z-index: 20;
       }
+      .nav-dropdown.is-open .nav-dropdown-menu { opacity: 1; pointer-events: auto; transform: translateY(0); }
+      .nav-dropdown-menu a { display:block; padding:10px 12px; border-radius:8px; color: var(--text); }
+      .nav-dropdown-menu a:hover { background: rgba(245,247,255,.06); }
 
-      .nav-dropdown.is-open .nav-dropdown-menu {
-        opacity: 1;
-        pointer-events: auto;
-        transform: translateY(0);
+      .pricing-table-wrap { max-width: 1100px; margin: 24px auto 0; overflow-x: auto; }
+      .pricing-table {
+        width: 100%; border-collapse: collapse; min-width: 760px; background: var(--card);
+        border: 1px solid var(--border); border-radius: 14px; overflow: hidden;
       }
-
-      .nav-dropdown-menu a {
-        display: block;
-        padding: 10px 12px;
-        border-radius: 8px;
-        color: var(--text);
-      }
-
-      .nav-dropdown-menu a:hover {
-        background: rgba(245, 247, 255, 0.06);
-      }
-
-      .price-grid {
-        max-width: 1100px;
-        margin: 24px auto 0;
-        display: grid;
-        gap: 20px;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      }
-
-      .price-card {
-        background: var(--card);
-        border: 1px solid var(--border);
-        border-radius: 18px;
-        padding: 22px;
-      }
-
-      .price-card h4 {
-        margin-bottom: 8px;
-      }
-
-      .price-value {
-        font-size: 1.9rem;
-        font-weight: 800;
-        margin-bottom: 8px;
-      }
-
-      .price-note {
-        color: var(--muted);
-        font-size: 0.95rem;
-      }
-
-      .price-list {
-        margin-top: 12px;
-        list-style: none;
-        display: grid;
-        gap: 8px;
-        color: var(--muted);
-      }
-
-      @media (max-width: 768px) {
-        .nav-dropdown-menu {
-          left: -30px;
-          min-width: 200px;
-        }
-      }
+      .pricing-table th, .pricing-table td { padding: 14px 16px; border-bottom: 1px solid var(--border); text-align: left; }
+      .pricing-table th { background: rgba(255,255,255,0.03); font-weight: 700; }
+      .pricing-table td { color: var(--muted); }
+      .pricing-table td:first-child { color: var(--text); font-weight: 600; }
+      .pricing-table tr:last-child td { border-bottom: none; }
+      .price-strong { color: var(--text); font-weight: 800; }
+      .services-links { max-width: 1100px; margin: 16px auto 0; color: var(--muted); }
+      .services-links a { color: var(--accent); }
     </style>
   </head>
   <body>
     <header class="site-header">
       <nav class="nav">
-        <a href="index.html">
-          <img class="logo" src="src/img/logo.png" alt="NetConn Pro" />
-        </a>
+        <a href="index.html"><img class="logo" src="src/img/logo.png" alt="NetConn Pro" /></a>
         <div class="nav-links">
           <div class="nav-dropdown" data-services-dropdown>
-            <button class="nav-dropdown-toggle" type="button" data-dropdown-toggle aria-expanded="false">
-              Services <span aria-hidden="true">▾</span>
-            </button>
+            <button class="nav-dropdown-toggle" type="button" data-dropdown-toggle aria-expanded="false">Services <span aria-hidden="true">▾</span></button>
             <div class="nav-dropdown-menu" role="menu" aria-label="Services menu">
-              <a href="services.html" role="menuitem">Website & Email Packages</a>
+              <a href="services/web/" role="menuitem">Web Services</a>
+              <a href="services/email/" role="menuitem">Email Services</a>
               <a href="#" role="menuitem">CCTV Installation (coming soon)</a>
               <a href="#" role="menuitem">Access Control (coming soon)</a>
             </div>
           </div>
           <a href="#pricing">Pricing</a>
-          <a href="#process">Process</a>
           <a href="#contact">Contact</a>
           <a href="support.html">Support</a>
         </div>
-        <button class="nav-cta" data-contact-modal>Get a package quote</button>
+        <button class="nav-cta" data-contact-modal>Get a quote</button>
       </nav>
     </header>
 
     <main>
       <section class="hero scroll-animate">
         <div class="hero-content">
-          <div class="eyebrow">Digital setup services for modern businesses</div>
-          <h1>Website and business email packages with clear pricing</h1>
+          <div class="eyebrow">Service Hub</div>
+          <h1>Web and email services with practical pricing</h1>
           <p>
-            We build clean, fast business websites and set up secure branded email systems
-            that make your company look professional from day one.
+            Pricing has been adjusted. Starter web is now <strong>£50</strong>, Growth web is <strong>£130</strong>.
             <br /><br />
-            This page is your service hub — we’ll keep adding more options here, including
-            CCTV installation and access control.
+            We’ve split service details into dedicated pages under <code>/services/web</code> and <code>/services/email</code>.
           </p>
           <div class="hero-actions">
-            <button class="primary-btn" data-contact-modal>Request a proposal</button>
-            <a href="#pricing"><button class="ghost-btn">View pricing</button></a>
-          </div>
-          <div class="hero-stats">
-            <div class="pipeline-step scroll-animate">Plan</div>
-            <span class="pipeline-arrow scroll-animate" aria-hidden="true">→</span>
-            <div class="pipeline-step scroll-animate">Launch</div>
-            <span class="pipeline-arrow scroll-animate" aria-hidden="true">→</span>
-            <div class="pipeline-step scroll-animate">Support</div>
-          </div>
-        </div>
-      </section>
-
-      <section class="services scroll-animate" id="website-packages">
-        <div class="section-title scroll-animate">
-          <h2>Website packages</h2>
-          <p>Designed to turn visitors into enquiries, with fast mobile performance.</p>
-        </div>
-        <div class="service-grid">
-          <article class="scroll-animate">
-            <h3>Starter Site</h3>
-            <p>Single-page website with service overview, contact form, and basic SEO setup.</p>
-          </article>
-          <article class="scroll-animate">
-            <h3>Growth Site</h3>
-            <p>Multi-page build with homepage, service pages, about, contact, and analytics setup.</p>
-          </article>
-          <article class="scroll-animate">
-            <h3>Pro Site + Integrations</h3>
-            <p>Custom design with CRM/forms integration, automation workflows, and tracking.</p>
-          </article>
-          <article class="scroll-animate">
-            <h3>Website Care Plan</h3>
-            <p>Monthly updates, edits, performance checks, and priority support.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="process scroll-animate" id="email-packages">
-        <div class="section-title scroll-animate">
-          <h2>Email packages</h2>
-          <p>Professional branded email setup and migration for your team.</p>
-        </div>
-        <div class="process-steps">
-          <div class="scroll-animate">
-            <span>01</span>
-            <h4>Business Email Setup</h4>
-            <p>Branded addresses and DNS setup for secure, reliable delivery.</p>
-          </div>
-          <div class="scroll-animate">
-            <span>02</span>
-            <h4>Migration & Inbox Transfer</h4>
-            <p>Move emails, contacts, and folders with minimal downtime.</p>
-          </div>
-          <div class="scroll-animate">
-            <span>03</span>
-            <h4>Team Management</h4>
-            <p>Shared inboxes, account permissions, onboarding, and user policy setup.</p>
-          </div>
-          <div class="scroll-animate">
-            <span>04</span>
-            <h4>Security & Support</h4>
-            <p>SPF/DKIM/DMARC plus ongoing support and troubleshooting.</p>
+            <a href="services/web/"><button class="primary-btn">View web services</button></a>
+            <a href="services/email/"><button class="ghost-btn">View email services</button></a>
           </div>
         </div>
       </section>
 
       <section class="services scroll-animate" id="pricing">
         <div class="section-title scroll-animate">
-          <h2>Pricing</h2>
-          <p>Transparent package pricing. Final quote depends on scope and integrations.</p>
+          <h2>Pricing & features</h2>
+          <p>Simple comparison table for packages and what’s included.</p>
         </div>
-        <div class="price-grid">
-          <article class="price-card scroll-animate">
-            <h4>Website Starter</h4>
-            <div class="price-value">from £499</div>
-            <p class="price-note">Great for new businesses needing a strong online presence fast.</p>
-            <ul class="price-list">
-              <li>• Single-page website</li>
-              <li>• Contact form</li>
-              <li>• Mobile optimization</li>
-            </ul>
-          </article>
 
-          <article class="price-card scroll-animate">
-            <h4>Website Growth</h4>
-            <div class="price-value">from £1,200</div>
-            <p class="price-note">For established companies that need multi-page structure.</p>
-            <ul class="price-list">
-              <li>• Up to 5 pages</li>
-              <li>• Conversion-focused layout</li>
-              <li>• Analytics setup</li>
-            </ul>
-          </article>
-
-          <article class="price-card scroll-animate">
-            <h4>Business Email Setup</h4>
-            <div class="price-value">from £180</div>
-            <p class="price-note">Per domain setup, ideal for small teams.</p>
-            <ul class="price-list">
-              <li>• Domain DNS configuration</li>
-              <li>• Mailbox setup</li>
-              <li>• Security records (SPF/DKIM)</li>
-            </ul>
-          </article>
-
-          <article class="price-card scroll-animate">
-            <h4>Email Migration</h4>
-            <div class="price-value">from £250</div>
-            <p class="price-note">Migration pricing depends on mailbox count and data size.</p>
-            <ul class="price-list">
-              <li>• Inbox/contacts transfer</li>
-              <li>• Downtime minimised</li>
-              <li>• Post-migration checks</li>
-            </ul>
-          </article>
+        <div class="pricing-table-wrap scroll-animate">
+          <table class="pricing-table" aria-label="Pricing and features table">
+            <thead>
+              <tr>
+                <th>Package</th>
+                <th>Price</th>
+                <th>Best for</th>
+                <th>Features</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Web Starter</td>
+                <td class="price-strong">£50</td>
+                <td>New businesses</td>
+                <td>1-page website, mobile responsive, contact form, basic SEO</td>
+              </tr>
+              <tr>
+                <td>Web Growth</td>
+                <td class="price-strong">£130</td>
+                <td>Growing businesses</td>
+                <td>Up to 5 pages, stronger layout, analytics setup, enquiry flow</td>
+              </tr>
+              <tr>
+                <td>Email Setup</td>
+                <td class="price-strong">from £50</td>
+                <td>Branded inbox launch</td>
+                <td>DNS setup, mailbox creation, SPF/DKIM configuration</td>
+              </tr>
+              <tr>
+                <td>Email Migration</td>
+                <td class="price-strong">from £90</td>
+                <td>Moving providers</td>
+                <td>Inbox transfer, contacts migration, post-move validation</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-      </section>
 
-      <section class="about scroll-animate" id="process">
-        <div class="about-content scroll-animate">
-          <h2>How we deliver</h2>
-          <p>Discovery call, clear scope, quick turnaround, and support after launch.</p>
-          <div class="about-highlights">
-            <div class="scroll-animate">
-              <h4>Clear scope and timelines</h4>
-              <p>No guesswork — just practical delivery.</p>
-            </div>
-            <div class="scroll-animate">
-              <h4>Future-ready structure</h4>
-              <p>This Services area is built to expand with more packages.</p>
-            </div>
-          </div>
-        </div>
-        <div class="about-panel scroll-animate">
-          <h3>Coming soon</h3>
-          <ul>
-            <li>CCTV Installation Packages</li>
-            <li>Access Control Packages</li>
-            <li>Managed Security Maintenance</li>
-            <li>Combined Site + Security bundles</li>
-          </ul>
-          <button class="secondary-btn" data-contact-modal>Book a package call</button>
-        </div>
+        <p class="services-links scroll-animate">
+          Full details: <a href="services/web/">Web services page</a> ·
+          <a href="services/email/">Email services page</a>
+        </p>
       </section>
 
       <section class="cta scroll-animate" id="contact">
         <div class="scroll-animate">
-          <h2>Need a package recommendation?</h2>
-          <p>Tell us what you need and we’ll suggest the right website/email setup.</p>
+          <h2>Want a custom package?</h2>
+          <p>Tell us what you need and we’ll quote quickly.</p>
         </div>
         <form class="cta-form scroll-animate">
-          <button type="button" data-contact-modal>Get my package quote</button>
+          <button type="button" data-contact-modal>Request quote</button>
         </form>
       </section>
     </main>
@@ -310,143 +144,78 @@
     <div class="modal" id="contact-modal" aria-hidden="true">
       <div class="modal-overlay" data-modal-close></div>
       <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
-        <button class="modal-close" type="button" data-modal-close aria-label="Close contact form">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <button class="modal-close" type="button" data-modal-close aria-label="Close contact form"><span aria-hidden="true">&times;</span></button>
         <h2 id="contact-modal-title">Request a Service Quote</h2>
         <p>Share your goals and timeline. We'll reply within one working day.</p>
         <form class="modal-form">
           <input type="text" name="fullName" placeholder="Full name" />
           <input type="email" name="email" placeholder="Email address" />
           <input type="text" name="businessName" placeholder="Business name" />
-          <input type="text" name="location" placeholder="Location" />
           <textarea name="message" rows="4" placeholder="Tell us what service you need"></textarea>
           <button type="submit">Send request</button>
         </form>
       </div>
     </div>
 
-    <footer class="footer scroll-animate">
-      <div class="scroll-animate">
-        <strong>NetConn Pro</strong>
-        <p>Websites. Email. Security services.</p>
-      </div>
-      <div class="footer-links scroll-animate">
-        <span>© 2026 NetConn Pro</span>
-        <span>hello@netconn.pro</span>
-        <span>+44 7706 943666</span>
-      </div>
-    </footer>
-
     <script>
-      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-      const revealElements = document.querySelectorAll(".scroll-animate");
-      if (prefersReducedMotion) {
-        revealElements.forEach((element) => element.classList.add("is-visible"));
+      const revealElements = document.querySelectorAll('.scroll-animate');
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduced) {
+        revealElements.forEach((e) => e.classList.add('is-visible'));
       } else {
-        const revealObserver = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add("is-visible");
-                revealObserver.unobserve(entry.target);
-              }
-            });
-          },
-          { threshold: 0.2 }
-        );
-
-        revealElements.forEach((element) => revealObserver.observe(element));
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.2 });
+        revealElements.forEach((e) => observer.observe(e));
       }
 
-      const servicesDropdown = document.querySelector("[data-services-dropdown]");
-      const dropdownToggle = document.querySelector("[data-dropdown-toggle]");
-
+      const servicesDropdown = document.querySelector('[data-services-dropdown]');
+      const dropdownToggle = document.querySelector('[data-dropdown-toggle]');
       if (servicesDropdown && dropdownToggle) {
-        dropdownToggle.addEventListener("click", () => {
-          servicesDropdown.classList.toggle("is-open");
-          const expanded = servicesDropdown.classList.contains("is-open");
-          dropdownToggle.setAttribute("aria-expanded", expanded ? "true" : "false");
+        dropdownToggle.addEventListener('click', () => {
+          servicesDropdown.classList.toggle('is-open');
+          dropdownToggle.setAttribute('aria-expanded', servicesDropdown.classList.contains('is-open') ? 'true' : 'false');
         });
-
-        document.addEventListener("click", (event) => {
+        document.addEventListener('click', (event) => {
           if (!servicesDropdown.contains(event.target)) {
-            servicesDropdown.classList.remove("is-open");
-            dropdownToggle.setAttribute("aria-expanded", "false");
+            servicesDropdown.classList.remove('is-open');
+            dropdownToggle.setAttribute('aria-expanded', 'false');
           }
         });
       }
 
-      const contactModal = document.getElementById("contact-modal");
-      const modalTriggers = document.querySelectorAll("[data-contact-modal]");
-      const modalCloseTargets = contactModal.querySelectorAll("[data-modal-close]");
+      const contactModal = document.getElementById('contact-modal');
+      const modalTriggers = document.querySelectorAll('[data-contact-modal]');
+      const modalCloseTargets = contactModal.querySelectorAll('[data-modal-close]');
+      const openContactModal = () => { contactModal.classList.add('is-visible'); contactModal.setAttribute('aria-hidden', 'false'); document.body.classList.add('modal-open'); };
+      const closeContactModal = () => { contactModal.classList.remove('is-visible'); contactModal.setAttribute('aria-hidden', 'true'); document.body.classList.remove('modal-open'); };
+      modalTriggers.forEach((trigger) => trigger.addEventListener('click', (event) => { event.preventDefault(); openContactModal(); }));
+      modalCloseTargets.forEach((target) => target.addEventListener('click', closeContactModal));
 
-      const openContactModal = () => {
-        contactModal.classList.add("is-visible");
-        contactModal.setAttribute("aria-hidden", "false");
-        document.body.classList.add("modal-open");
-      };
-
-      const closeContactModal = () => {
-        contactModal.classList.remove("is-visible");
-        contactModal.setAttribute("aria-hidden", "true");
-        document.body.classList.remove("modal-open");
-      };
-
-      modalTriggers.forEach((trigger) => {
-        trigger.addEventListener("click", (event) => {
-          event.preventDefault();
-          openContactModal();
-        });
-      });
-
-      modalCloseTargets.forEach((target) => target.addEventListener("click", closeContactModal));
-
-      document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape" && contactModal.classList.contains("is-visible")) {
-          closeContactModal();
-        }
-      });
-
-      const contactForm = document.querySelector(".modal-form");
+      const contactForm = document.querySelector('.modal-form');
       const contactSubmit = contactForm?.querySelector("button[type='submit']");
-
       if (contactForm) {
-        contactForm.addEventListener("submit", async (event) => {
+        contactForm.addEventListener('submit', async (event) => {
           event.preventDefault();
-
           const formData = new FormData(contactForm);
           const payload = Object.fromEntries(formData.entries());
-          payload.serviceType = "services-hub";
-
-          if (contactSubmit) {
-            contactSubmit.disabled = true;
-            contactSubmit.textContent = "Sending...";
-          }
-
+          payload.serviceType = 'services-hub';
+          if (contactSubmit) { contactSubmit.disabled = true; contactSubmit.textContent = 'Sending...'; }
           try {
-            const response = await fetch("https://n8n.netconn.pro/webhook/ncp-web-contact", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(payload),
+            const response = await fetch('https://n8n.netconn.pro/webhook/ncp-web-contact', {
+              method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload),
             });
-
-            if (!response.ok) {
-              throw new Error("Request failed");
-            }
-
-            contactForm.reset();
-            closeContactModal();
+            if (!response.ok) throw new Error('Request failed');
+            contactForm.reset(); closeContactModal();
           } catch (error) {
-            console.error("Contact form submission failed:", error);
+            console.error('Contact form submission failed:', error);
           } finally {
-            if (contactSubmit) {
-              contactSubmit.disabled = false;
-              contactSubmit.textContent = "Send request";
-            }
+            if (contactSubmit) { contactSubmit.disabled = false; contactSubmit.textContent = 'Send request'; }
           }
         });
       }

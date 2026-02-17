@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NetConn Pro - Web Services</title>
+    <link rel="stylesheet" href="../../src/css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a href="../../index.html"><img class="logo" src="../../src/img/logo.png" alt="NetConn Pro" /></a>
+        <div class="nav-links">
+          <a href="../../services.html">Services Hub</a>
+          <a href="#packages">Packages</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <button class="nav-cta" data-contact-modal>Get web quote</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero scroll-animate">
+        <div class="hero-content">
+          <div class="eyebrow">Web Services</div>
+          <h1>Affordable websites for local businesses</h1>
+          <p>Fast, modern sites designed to convert visitors into enquiries.</p>
+          <div class="hero-actions">
+            <a href="#pricing"><button class="primary-btn">See pricing</button></a>
+            <a href="../../services.html"><button class="ghost-btn">Back to services hub</button></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="services scroll-animate" id="packages">
+        <div class="section-title scroll-animate">
+          <h2>Web packages</h2>
+          <p>Pick a package and we can tailor as needed.</p>
+        </div>
+        <div class="service-grid">
+          <article class="scroll-animate">
+            <h3>Starter</h3>
+            <p>Single-page website, mobile optimized, contact form, basic SEO.</p>
+          </article>
+          <article class="scroll-animate">
+            <h3>Growth</h3>
+            <p>Up to 5 pages, better conversion structure, and analytics setup.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="process scroll-animate" id="pricing">
+        <div class="section-title scroll-animate"><h2>Web pricing</h2></div>
+        <div class="process-steps">
+          <div class="scroll-animate"><span>01</span><h4>Starter</h4><p><strong>£50</strong> — launch-ready one-page site.</p></div>
+          <div class="scroll-animate"><span>02</span><h4>Growth</h4><p><strong>£130</strong> — multi-page website for growing teams.</p></div>
+        </div>
+      </section>
+
+      <section class="cta scroll-animate" id="contact">
+        <div class="scroll-animate"><h2>Ready to launch?</h2><p>Tell us what you need.</p></div>
+        <form class="cta-form scroll-animate"><button type="button" data-contact-modal>Request web quote</button></form>
+      </section>
+    </main>
+
+    <div class="modal" id="contact-modal" aria-hidden="true"><div class="modal-overlay" data-modal-close></div><div class="modal-card" role="dialog" aria-modal="true"><button class="modal-close" type="button" data-modal-close aria-label="Close"><span aria-hidden="true">&times;</span></button><h2>Web Service Quote</h2><form class="modal-form"><input type="text" name="fullName" placeholder="Full name" /><input type="email" name="email" placeholder="Email" /><textarea name="message" rows="4" placeholder="Project details"></textarea><button type="submit">Send request</button></form></div></div>
+
+    <script>
+      const revealElements = document.querySelectorAll('.scroll-animate');
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduced) revealElements.forEach((e) => e.classList.add('is-visible')); else {
+        const observer = new IntersectionObserver((entries) => entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); } }), { threshold: 0.2 });
+        revealElements.forEach((e) => observer.observe(e));
+      }
+      const modal = document.getElementById('contact-modal');
+      document.querySelectorAll('[data-contact-modal]').forEach((b) => b.addEventListener('click', (e) => { e.preventDefault(); modal.classList.add('is-visible'); modal.setAttribute('aria-hidden','false'); document.body.classList.add('modal-open'); }));
+      document.querySelectorAll('[data-modal-close]').forEach((b) => b.addEventListener('click', () => { modal.classList.remove('is-visible'); modal.setAttribute('aria-hidden','true'); document.body.classList.remove('modal-open'); }));
+    </script>
+  </body>
+</html>
