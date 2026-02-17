@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NetConn Pro - CCTV Installation</title>
+    <link rel="stylesheet" href="../../src/css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a href="../../index.html"><img class="logo" src="../../src/img/logo.png" alt="NetConn Pro" /></a>
+        <div class="nav-links">
+          <a href="../../services/">Services Gallery</a>
+          <a href="#packages">Packages</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <button class="nav-cta" data-contact-modal>Book CCTV survey</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero scroll-animate">
+        <div class="hero-content">
+          <div class="eyebrow">CCTV Installation</div>
+          <h1>Smart CCTV systems for homes and businesses</h1>
+          <p>We design and install camera systems with mobile access, clear coverage, and reliable recording.</p>
+          <div class="hero-actions">
+            <button class="primary-btn" data-contact-modal>Request CCTV quote</button>
+            <a href="../../services/"><button class="ghost-btn">Back to services</button></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="services scroll-animate" id="packages">
+        <div class="section-title scroll-animate">
+          <h2>CCTV packages</h2>
+          <p>Built around your property size, risk profile, and budget.</p>
+        </div>
+        <div class="service-grid">
+          <article class="scroll-animate"><h3>Home CCTV</h3><p>2-4 camera systems, app setup, and recording configuration.</p></article>
+          <article class="scroll-animate"><h3>Business CCTV</h3><p>5+ camera systems with zoning, retention rules, and remote access.</p></article>
+          <article class="scroll-animate"><h3>Monitoring Upgrade</h3><p>Replace aging cameras/NVRs and improve image quality and reliability.</p></article>
+        </div>
+      </section>
+
+      <section class="cta scroll-animate" id="contact">
+        <div class="scroll-animate"><h2>Need a CCTV install?</h2><p>Tell us your site details and we’ll recommend a package.</p></div>
+        <form class="cta-form scroll-animate"><button type="button" data-contact-modal>Get CCTV quote</button></form>
+      </section>
+    </main>
+
+    <div class="modal" id="contact-modal" aria-hidden="true">
+      <div class="modal-overlay" data-modal-close></div>
+      <div class="modal-card" role="dialog" aria-modal="true">
+        <button class="modal-close" type="button" data-modal-close aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h2>CCTV Quote Request</h2>
+        <form class="modal-form">
+          <input type="text" name="fullName" placeholder="Full name" />
+          <input type="email" name="email" placeholder="Email" />
+          <textarea name="message" rows="4" placeholder="Property type, number of cameras, and goals"></textarea>
+          <button type="submit">Send request</button>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      const revealElements = document.querySelectorAll('.scroll-animate');
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduced) revealElements.forEach((e) => e.classList.add('is-visible')); else {
+        const observer = new IntersectionObserver((entries) => entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); } }), { threshold: 0.2 });
+        revealElements.forEach((e) => observer.observe(e));
+      }
+      const modal = document.getElementById('contact-modal');
+      document.querySelectorAll('[data-contact-modal]').forEach((b) => b.addEventListener('click', (e) => { e.preventDefault(); modal.classList.add('is-visible'); modal.setAttribute('aria-hidden','false'); document.body.classList.add('modal-open'); }));
+      document.querySelectorAll('[data-modal-close]').forEach((b) => b.addEventListener('click', () => { modal.classList.remove('is-visible'); modal.setAttribute('aria-hidden','true'); document.body.classList.remove('modal-open'); }));
+    </script>
+  </body>
+</html>
