@@ -8,15 +8,26 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      .pricing-wrap { max-width: 1100px; margin: 0 auto; overflow-x: auto; }
+      .pricing-table { width: 100%; border-collapse: collapse; min-width: 720px; background: var(--card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+      .pricing-table th, .pricing-table td { padding: 14px 16px; border-bottom: 1px solid var(--border); text-align: left; }
+      .pricing-table th { background: rgba(255,255,255,.03); }
+      .pricing-table td { color: var(--muted); }
+      .pricing-table td:first-child { color: var(--text); font-weight: 700; }
+      .pricing-table tr:last-child td { border-bottom: none; }
+      .price { color: var(--text); font-weight: 800; }
+    </style>
   </head>
   <body>
     <header class="site-header">
       <nav class="nav">
         <a href="../../index.html"><img class="logo" src="../../src/img/logo.png" alt="NetConn Pro" /></a>
         <div class="nav-links">
-          <a href="../../services.html">Services Hub</a>
+          <a href="../../services/">Services Gallery</a>
           <a href="#packages">Packages</a>
           <a href="#pricing">Pricing</a>
+          <a href="#process">Process</a>
           <a href="#contact">Contact</a>
         </div>
         <button class="nav-cta" data-contact-modal>Get web quote</button>
@@ -27,11 +38,14 @@
       <section class="hero scroll-animate">
         <div class="hero-content">
           <div class="eyebrow">Web Services</div>
-          <h1>Affordable websites for local businesses</h1>
-          <p>Fast, modern sites designed to convert visitors into enquiries.</p>
+          <h1>Affordable websites built to win enquiries</h1>
+          <p>
+            We build clean, fast websites for local businesses that need a credible online presence.
+            Every build is mobile-first and structured around conversion.
+          </p>
           <div class="hero-actions">
             <a href="#pricing"><button class="primary-btn">See pricing</button></a>
-            <a href="../../services.html"><button class="ghost-btn">Back to services hub</button></a>
+            <a href="../../services/"><button class="ghost-btn">Back to services</button></a>
           </div>
         </div>
       </section>
@@ -39,30 +53,39 @@
       <section class="services scroll-animate" id="packages">
         <div class="section-title scroll-animate">
           <h2>Web packages</h2>
-          <p>Pick a package and we can tailor as needed.</p>
+          <p>Simple packages with practical scope.</p>
         </div>
         <div class="service-grid">
-          <article class="scroll-animate">
-            <h3>Starter</h3>
-            <p>Single-page website, mobile optimized, contact form, basic SEO.</p>
-          </article>
-          <article class="scroll-animate">
-            <h3>Growth</h3>
-            <p>Up to 5 pages, better conversion structure, and analytics setup.</p>
-          </article>
+          <article class="scroll-animate"><h3>Starter</h3><p>One-page site with services, trust elements, and contact flow.</p></article>
+          <article class="scroll-animate"><h3>Growth</h3><p>Up to 5 pages with stronger structure for SEO and conversion.</p></article>
+          <article class="scroll-animate"><h3>Optional add-ons</h3><p>Copywriting, extra pages, booking forms, and analytics dashboards.</p></article>
         </div>
       </section>
 
-      <section class="process scroll-animate" id="pricing">
-        <div class="section-title scroll-animate"><h2>Web pricing</h2></div>
+      <section class="services scroll-animate" id="pricing">
+        <div class="section-title scroll-animate"><h2>Pricing & features</h2><p>Transparent pricing with what’s included.</p></div>
+        <div class="pricing-wrap scroll-animate">
+          <table class="pricing-table" aria-label="Web services pricing table">
+            <thead><tr><th>Package</th><th>Price</th><th>Includes</th><th>Best for</th></tr></thead>
+            <tbody>
+              <tr><td>Web Starter</td><td class="price">£50</td><td>Single-page site, mobile responsive, contact form, basic SEO setup</td><td>New businesses launching quickly</td></tr>
+              <tr><td>Web Growth</td><td class="price">£130</td><td>Up to 5 pages, clearer service structure, analytics setup, stronger CTA flow</td><td>Businesses ready to scale enquiries</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="process scroll-animate" id="process">
+        <div class="section-title scroll-animate"><h2>How delivery works</h2></div>
         <div class="process-steps">
-          <div class="scroll-animate"><span>01</span><h4>Starter</h4><p><strong>£50</strong> — launch-ready one-page site.</p></div>
-          <div class="scroll-animate"><span>02</span><h4>Growth</h4><p><strong>£130</strong> — multi-page website for growing teams.</p></div>
+          <div class="scroll-animate"><span>01</span><h4>Discovery</h4><p>Quick call to define services, pages, and goals.</p></div>
+          <div class="scroll-animate"><span>02</span><h4>Build</h4><p>Design and implementation with regular check-ins.</p></div>
+          <div class="scroll-animate"><span>03</span><h4>Launch</h4><p>Testing, go-live, and handover with support options.</p></div>
         </div>
       </section>
 
       <section class="cta scroll-animate" id="contact">
-        <div class="scroll-animate"><h2>Ready to launch?</h2><p>Tell us what you need.</p></div>
+        <div class="scroll-animate"><h2>Ready to launch your site?</h2><p>Send us your business details and target timeline.</p></div>
         <form class="cta-form scroll-animate"><button type="button" data-contact-modal>Request web quote</button></form>
       </section>
     </main>

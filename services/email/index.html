@@ -8,15 +8,26 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      .pricing-wrap { max-width: 1100px; margin: 0 auto; overflow-x: auto; }
+      .pricing-table { width: 100%; border-collapse: collapse; min-width: 720px; background: var(--card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+      .pricing-table th, .pricing-table td { padding: 14px 16px; border-bottom: 1px solid var(--border); text-align: left; }
+      .pricing-table th { background: rgba(255,255,255,.03); }
+      .pricing-table td { color: var(--muted); }
+      .pricing-table td:first-child { color: var(--text); font-weight: 700; }
+      .pricing-table tr:last-child td { border-bottom: none; }
+      .price { color: var(--text); font-weight: 800; }
+    </style>
   </head>
   <body>
     <header class="site-header">
       <nav class="nav">
         <a href="../../index.html"><img class="logo" src="../../src/img/logo.png" alt="NetConn Pro" /></a>
         <div class="nav-links">
-          <a href="../../services.html">Services Hub</a>
+          <a href="../../services/">Services Gallery</a>
           <a href="#packages">Packages</a>
           <a href="#pricing">Pricing</a>
+          <a href="#process">Process</a>
           <a href="#contact">Contact</a>
         </div>
         <button class="nav-cta" data-contact-modal>Get email quote</button>
@@ -27,42 +38,51 @@
       <section class="hero scroll-animate">
         <div class="hero-content">
           <div class="eyebrow">Email Services</div>
-          <h1>Branded business email done properly</h1>
-          <p>Professional setup, migration, and security records configured correctly.</p>
+          <h1>Branded business email setup and migration</h1>
+          <p>
+            We set up professional email on your domain and handle migrations safely,
+            including DNS and deliverability records.
+          </p>
           <div class="hero-actions">
             <a href="#pricing"><button class="primary-btn">See pricing</button></a>
-            <a href="../../services.html"><button class="ghost-btn">Back to services hub</button></a>
+            <a href="../../services/"><button class="ghost-btn">Back to services</button></a>
           </div>
         </div>
       </section>
 
       <section class="services scroll-animate" id="packages">
-        <div class="section-title scroll-animate">
-          <h2>Email packages</h2>
-          <p>Get reliable delivery and a professional brand presence.</p>
-        </div>
+        <div class="section-title scroll-animate"><h2>Email packages</h2><p>Reliable setup with minimal disruption.</p></div>
         <div class="service-grid">
-          <article class="scroll-animate">
-            <h3>Email Setup</h3>
-            <p>Mailbox creation, DNS records, and secure email foundation.</p>
-          </article>
-          <article class="scroll-animate">
-            <h3>Email Migration</h3>
-            <p>Move inboxes and contacts with downtime minimised.</p>
-          </article>
+          <article class="scroll-animate"><h3>Email Setup</h3><p>Domain email setup, mailbox creation, and security records configured.</p></article>
+          <article class="scroll-animate"><h3>Email Migration</h3><p>Move inboxes, contacts, and folders with continuity planning.</p></article>
+          <article class="scroll-animate"><h3>Team Rollout</h3><p>User onboarding, shared mailboxes, and device setup guidance.</p></article>
         </div>
       </section>
 
-      <section class="process scroll-animate" id="pricing">
-        <div class="section-title scroll-animate"><h2>Email pricing</h2></div>
+      <section class="services scroll-animate" id="pricing">
+        <div class="section-title scroll-animate"><h2>Pricing & features</h2></div>
+        <div class="pricing-wrap scroll-animate">
+          <table class="pricing-table" aria-label="Email services pricing table">
+            <thead><tr><th>Package</th><th>Price</th><th>Includes</th><th>Best for</th></tr></thead>
+            <tbody>
+              <tr><td>Email Setup</td><td class="price">from £50</td><td>DNS setup, mailbox configuration, SPF/DKIM checks</td><td>New branded email deployments</td></tr>
+              <tr><td>Email Migration</td><td class="price">from £90</td><td>Inbox + contacts transfer, cutover planning, post-migration checks</td><td>Moving provider with low downtime</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="process scroll-animate" id="process">
+        <div class="section-title scroll-animate"><h2>Delivery process</h2></div>
         <div class="process-steps">
-          <div class="scroll-animate"><span>01</span><h4>Email Setup</h4><p><strong>from £50</strong> — branded email domain setup.</p></div>
-          <div class="scroll-animate"><span>02</span><h4>Email Migration</h4><p><strong>from £90</strong> — transfer existing inboxes safely.</p></div>
+          <div class="scroll-animate"><span>01</span><h4>Audit</h4><p>Review current provider, domains, and users.</p></div>
+          <div class="scroll-animate"><span>02</span><h4>Configure</h4><p>Set up records, accounts, and security controls.</p></div>
+          <div class="scroll-animate"><span>03</span><h4>Cutover</h4><p>Switch mail flow and validate delivery across devices.</p></div>
         </div>
       </section>
 
       <section class="cta scroll-animate" id="contact">
-        <div class="scroll-animate"><h2>Need email sorted?</h2><p>We can set it up and migrate with minimal disruption.</p></div>
+        <div class="scroll-animate"><h2>Need email sorted properly?</h2><p>Send your domain and user count for a quick quote.</p></div>
         <form class="cta-form scroll-animate"><button type="button" data-contact-modal>Request email quote</button></form>
       </section>
     </main>

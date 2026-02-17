@@ -8,6 +8,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      .pricing-wrap { max-width: 1100px; margin: 0 auto; overflow-x: auto; }
+      .pricing-table { width: 100%; border-collapse: collapse; min-width: 760px; background: var(--card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+      .pricing-table th, .pricing-table td { padding: 14px 16px; border-bottom: 1px solid var(--border); text-align: left; }
+      .pricing-table th { background: rgba(255,255,255,.03); }
+      .pricing-table td { color: var(--muted); }
+      .pricing-table td:first-child { color: var(--text); font-weight: 700; }
+      .pricing-table tr:last-child td { border-bottom: none; }
+      .price { color: var(--text); font-weight: 800; }
+    </style>
   </head>
   <body>
     <header class="site-header">
@@ -16,6 +26,8 @@
         <div class="nav-links">
           <a href="../../services/">Services Gallery</a>
           <a href="#packages">Packages</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#process">Process</a>
           <a href="#contact">Contact</a>
         </div>
         <button class="nav-cta" data-contact-modal>Book CCTV survey</button>
@@ -26,29 +38,52 @@
       <section class="hero scroll-animate">
         <div class="hero-content">
           <div class="eyebrow">CCTV Installation</div>
-          <h1>Smart CCTV systems for homes and businesses</h1>
-          <p>We design and install camera systems with mobile access, clear coverage, and reliable recording.</p>
+          <h1>Smart CCTV for homes, offices, and sites</h1>
+          <p>
+            We design camera layouts, install cleanly, and configure remote viewing and recording retention.
+            Coverage is planned around entrances, blind spots, and high-risk zones.
+          </p>
           <div class="hero-actions">
-            <button class="primary-btn" data-contact-modal>Request CCTV quote</button>
+            <a href="#pricing"><button class="primary-btn">See pricing</button></a>
             <a href="../../services/"><button class="ghost-btn">Back to services</button></a>
           </div>
         </div>
       </section>
 
       <section class="services scroll-animate" id="packages">
-        <div class="section-title scroll-animate">
-          <h2>CCTV packages</h2>
-          <p>Built around your property size, risk profile, and budget.</p>
-        </div>
+        <div class="section-title scroll-animate"><h2>CCTV packages</h2><p>Flexible options based on camera count and recording needs.</p></div>
         <div class="service-grid">
-          <article class="scroll-animate"><h3>Home CCTV</h3><p>2-4 camera systems, app setup, and recording configuration.</p></article>
-          <article class="scroll-animate"><h3>Business CCTV</h3><p>5+ camera systems with zoning, retention rules, and remote access.</p></article>
-          <article class="scroll-animate"><h3>Monitoring Upgrade</h3><p>Replace aging cameras/NVRs and improve image quality and reliability.</p></article>
+          <article class="scroll-animate"><h3>Home CCTV</h3><p>2-4 cameras, app setup, and recording configuration for front/rear coverage.</p></article>
+          <article class="scroll-animate"><h3>Business CCTV</h3><p>5+ cameras, zoning, user permissions, and recommended retention settings.</p></article>
+          <article class="scroll-animate"><h3>System Upgrade</h3><p>Replace aging cameras/NVRs and improve image quality and reliability.</p></article>
+        </div>
+      </section>
+
+      <section class="services scroll-animate" id="pricing">
+        <div class="section-title scroll-animate"><h2>Pricing & features</h2></div>
+        <div class="pricing-wrap scroll-animate">
+          <table class="pricing-table" aria-label="CCTV pricing table">
+            <thead><tr><th>Package</th><th>Price</th><th>Includes</th><th>Typical use</th></tr></thead>
+            <tbody>
+              <tr><td>Home CCTV Starter</td><td class="price">from £180</td><td>2-camera install, recorder setup, mobile app onboarding</td><td>Homes and small properties</td></tr>
+              <tr><td>Home CCTV Plus</td><td class="price">from £320</td><td>4-camera install, improved coverage design, remote alerts</td><td>Larger homes / wider perimeter</td></tr>
+              <tr><td>Business CCTV</td><td class="price">from £550</td><td>5+ cameras, access roles, retention planning, handover training</td><td>Offices, retail, and small commercial sites</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="process scroll-animate" id="process">
+        <div class="section-title scroll-animate"><h2>Installation process</h2></div>
+        <div class="process-steps">
+          <div class="scroll-animate"><span>01</span><h4>Site survey</h4><p>Confirm coverage goals and cable routes.</p></div>
+          <div class="scroll-animate"><span>02</span><h4>Install</h4><p>Fit cameras, recorder, and network securely.</p></div>
+          <div class="scroll-animate"><span>03</span><h4>Commission</h4><p>Configure app, alerts, and recording schedules.</p></div>
         </div>
       </section>
 
       <section class="cta scroll-animate" id="contact">
-        <div class="scroll-animate"><h2>Need a CCTV install?</h2><p>Tell us your site details and we’ll recommend a package.</p></div>
+        <div class="scroll-animate"><h2>Need a CCTV install?</h2><p>Send your property details and preferred camera count.</p></div>
         <form class="cta-form scroll-animate"><button type="button" data-contact-modal>Get CCTV quote</button></form>
       </section>
     </main>
