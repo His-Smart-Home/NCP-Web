@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NetConn Pro - Services Gallery</title>
+    <link rel="stylesheet" href="../src/css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      .service-gallery {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 22px;
+      }
+
+      .service-tile {
+        position: relative;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 24px;
+        min-height: 220px;
+        display: grid;
+        gap: 12px;
+        align-content: start;
+        box-shadow: 0 16px 28px rgba(2, 6, 23, 0.34);
+        transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+      }
+
+      .service-tile:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 24px 40px rgba(2, 6, 23, 0.48);
+        border-color: rgba(76, 125, 255, 0.35);
+      }
+
+      .service-tile h3 { margin-bottom: 2px; }
+      .service-tile p { color: var(--muted); }
+
+      .tile-tag {
+        display: inline-flex;
+        width: fit-content;
+        padding: 5px 10px;
+        border-radius: 999px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        background: rgba(35, 214, 198, 0.16);
+        color: #8ef5ea;
+      }
+
+      .tile-link {
+        margin-top: 8px;
+        font-weight: 700;
+        color: var(--accent);
+      }
+
+      .tile-link.disabled {
+        color: var(--muted);
+        cursor: not-allowed;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a href="../index.html"><img class="logo" src="../src/img/logo.png" alt="NetConn Pro" /></a>
+        <div class="nav-links">
+          <a href="/services/">Services</a>
+          <a href="web/">Web</a>
+          <a href="email/">Email</a>
+          <a href="../support.html">Support</a>
+        </div>
+        <a href="../services.html" class="nav-cta" style="display:inline-flex;align-items:center;">Legacy page</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero scroll-animate">
+        <div class="hero-content">
+          <div class="eyebrow">NetConn Pro Services</div>
+          <h1>Service gallery</h1>
+          <p>
+            Browse our services and jump straight to what you need. We’ve replaced <code>/services</code>
+            with this gallery layout so it’s easier to expand with new offerings.
+          </p>
+        </div>
+      </section>
+
+      <section class="services scroll-animate">
+        <div class="section-title scroll-animate">
+          <h2>Explore services</h2>
+          <p>Current live services plus upcoming security packages.</p>
+        </div>
+
+        <div class="service-gallery">
+          <article class="service-tile scroll-animate">
+            <span class="tile-tag">Live</span>
+            <h3>Web Services</h3>
+            <p>Business websites, landing pages, and lead-focused builds.</p>
+            <a class="tile-link" href="web/">Open Web Services →</a>
+          </article>
+
+          <article class="service-tile scroll-animate">
+            <span class="tile-tag">Live</span>
+            <h3>Email Services</h3>
+            <p>Branded business email setup, migration, and deliverability.</p>
+            <a class="tile-link" href="email/">Open Email Services →</a>
+          </article>
+
+          <article class="service-tile scroll-animate">
+            <span class="tile-tag">Coming soon</span>
+            <h3>CCTV Installation</h3>
+            <p>Camera system design, install, and remote monitoring setup.</p>
+            <span class="tile-link disabled">Launching soon</span>
+          </article>
+
+          <article class="service-tile scroll-animate">
+            <span class="tile-tag">Coming soon</span>
+            <h3>Access Control</h3>
+            <p>Door entry, keyless systems, and access management for teams.</p>
+            <span class="tile-link disabled">Launching soon</span>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer scroll-animate">
+      <div class="scroll-animate">
+        <strong>NetConn Pro</strong>
+        <p>Connectivity, web, and security services.</p>
+      </div>
+      <div class="footer-links scroll-animate">
+        <span>© 2026 NetConn Pro</span>
+        <span>hello@netconn.pro</span>
+        <span>+44 7706 943666</span>
+      </div>
+    </footer>
+
+    <script>
+      const revealElements = document.querySelectorAll('.scroll-animate');
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduced) {
+        revealElements.forEach((e) => e.classList.add('is-visible'));
+      } else {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.2 });
+        revealElements.forEach((e) => observer.observe(e));
+      }
+    </script>
+  </body>
+</html>
